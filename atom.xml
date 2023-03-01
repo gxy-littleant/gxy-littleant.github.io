@@ -1,25 +1,50 @@
 <?xml version="1.0" encoding="utf-8"?>
 <feed xmlns="http://www.w3.org/2005/Atom">
-  <title>Hexo</title>
+  <title>gxy-littleant&#39;s Blog</title>
   
   
-  <link href="http://example.com/atom.xml" rel="self"/>
+  <link href="https://gxy-littleant.github.io/atom.xml" rel="self"/>
   
-  <link href="http://example.com/"/>
-  <updated>2023-02-25T11:43:15.497Z</updated>
-  <id>http://example.com/</id>
+  <link href="https://gxy-littleant.github.io/"/>
+  <updated>2023-03-01T11:52:51.298Z</updated>
+  <id>https://gxy-littleant.github.io/</id>
   
   <author>
-    <name>John Doe</name>
+    <name>gxy</name>
     
   </author>
   
   <generator uri="https://hexo.io/">Hexo</generator>
   
   <entry>
+    <title>三月一</title>
+    <link href="https://gxy-littleant.github.io/2023/03/01/ocr-modelscope/"/>
+    <id>https://gxy-littleant.github.io/2023/03/01/ocr-modelscope/</id>
+    <published>2023-03-01T10:15:50.000Z</published>
+    <updated>2023-03-01T11:52:51.298Z</updated>
+    
+    <content type="html"><![CDATA[<br>]]></content>
+    
+    
+      
+      
+    <summary type="html">&lt;br&gt;
+
+
+</summary>
+      
+    
+    
+    
+    
+    <category term="随笔" scheme="https://gxy-littleant.github.io/tags/%E9%9A%8F%E7%AC%94/"/>
+    
+  </entry>
+  
+  <entry>
     <title>test_my_site</title>
-    <link href="http://example.com/2023/02/25/test-my-site/"/>
-    <id>http://example.com/2023/02/25/test-my-site/</id>
+    <link href="https://gxy-littleant.github.io/2023/02/25/test-my-site/"/>
+    <id>https://gxy-littleant.github.io/2023/02/25/test-my-site/</id>
     <published>2023-02-25T11:43:15.000Z</published>
     <updated>2023-02-25T11:43:15.497Z</updated>
     
@@ -31,8 +56,8 @@
   
   <entry>
     <title>Hello World</title>
-    <link href="http://example.com/2023/02/25/hello-world/"/>
-    <id>http://example.com/2023/02/25/hello-world/</id>
+    <link href="https://gxy-littleant.github.io/2023/02/25/hello-world/"/>
+    <id>https://gxy-littleant.github.io/2023/02/25/hello-world/</id>
     <published>2023-02-25T11:41:59.528Z</published>
     <updated>2023-02-25T11:41:59.528Z</updated>
     
