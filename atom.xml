@@ -6,7 +6,7 @@
   <link href="https://gxy-littleant.github.io/atom.xml" rel="self"/>
   
   <link href="https://gxy-littleant.github.io/"/>
-  <updated>2023-04-03T14:55:58.298Z</updated>
+  <updated>2023-05-08T06:42:19.125Z</updated>
   <id>https://gxy-littleant.github.io/</id>
   
   <author>
@@ -15,6 +15,28 @@
   </author>
   
   <generator uri="https://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>自旋锁和互斥锁</title>
+    <link href="https://gxy-littleant.github.io/2023/05/08/%E8%87%AA%E6%97%8B%E9%94%81%E5%92%8C%E4%BA%92%E6%96%A5%E9%94%81/"/>
+    <id>https://gxy-littleant.github.io/2023/05/08/%E8%87%AA%E6%97%8B%E9%94%81%E5%92%8C%E4%BA%92%E6%96%A5%E9%94%81/</id>
+    <published>2023-05-08T06:35:00.000Z</published>
+    <updated>2023-05-08T06:42:19.125Z</updated>
+    
+    <content type="html"><![CDATA[<h1 id="互斥锁和自旋锁"><a href="#互斥锁和自旋锁" class="headerlink" title="互斥锁和自旋锁"></a>互斥锁和自旋锁</h1><h2 id="互斥锁"><a href="#互斥锁" class="headerlink" title="互斥锁"></a>互斥锁</h2><p>互斥锁是一种独占锁，当线程A加锁成功后，此时互斥锁已经被线程A独占了，只要线程A没有释放手中的锁，线程B就会失败，就会释放掉CPU给其他线程，线程B加锁的代码就会被阻塞。</p><p>互斥锁加锁失败而阻塞是由操作系统内核实现的，当加锁失败后，内核将线程置为睡眠状态，等到锁被释放后，内核会在合适的时机唤醒线程，当这个线程加锁成功后就可以继续执行。</p><p>互斥锁加锁失败后，会从用户态陷入到内核态，让内核帮助我们切换线程，虽然简化了使用锁的难度，但是存在一定的性能开销成本。</p><p>性能开销成本：两次线程上下文切换的成本。</p><ol><li>当线程加锁失败时，内核将线程的状态从【运行】切换到睡眠状态，然后把CPU切换给其他线程运行；</li><li>当锁被释放时，之前睡眠状态的线程会变成就绪状态，然后内核就会在合适的时间把CPU切换给该线程运行；</li></ol><p>当两个线程属于同一个进程，因为虚拟内存是共享的，所以在切换时，虚拟内存这些资源就保持不动，只需要切换线程的私有数据、寄存器等不共享的数据。</p><p>上下切换的耗时大概在几十纳秒到几微秒之间，<strong>如果锁住的代码执行时间比较短，可能上下文切换的时间比锁住的代码执行时间还要长。</strong><br><strong>若是能确定被锁住的代码执行时间很短，就不应该使用互斥锁，而应该选择自旋锁。</strong></p><h2 id="自旋锁"><a href="#自旋锁" class="headerlink" title="自旋锁"></a>自旋锁</h2><p>自旋锁通过CPU提供的CAS，在<strong>用户态完成加锁和解锁操作</strong>，不会主动产生线程上下文切换，所以相比互斥锁来说，会快一些开销小一些。</p><p>加锁过程：<br>● 查看锁的状态，若是空闲的则执行2</p><p>● 将锁设置为当前线程持有；使用自旋锁的时候，当发生多线程竞争锁的情况，加锁失败的线程会忙等待，直到拿到锁。忙等待可以通过while循环实现，不过最好是使用CPU提供的PAUSE指令来实现。</p><p>自旋锁利用CPU周期一直自旋直到锁可用。<strong>由于一个自旋的线程永远不会放弃CPU，因此在单核CPU上，需要抢占式的调度器（不断通过时钟中断一个线程，运行其他线程）。</strong></p><p>自旋的时间和被锁住的代码执行的时间成正比关系。</p><p>当加锁失败，互斥锁使用线程切换应对，自旋锁用忙等待应对。更高级的锁都会选择其中一个实现 </p><hr><p>一直不理解自旋锁，给我的感觉就是一直占着CPU，不断轮询当前锁是否可用；事实上就是这样，只不过前提条件是多个CPU。<br>在单CPU条件下，需要<strong>抢占式的调度器</strong>，因为自旋锁不会放弃CPU（一直霸占CPU）<br>BTW，美团给个offer吧！求求了~</p>]]></content>
+    
+    
+      
+      
+    <summary type="html">&lt;h1 id=&quot;互斥锁和自旋锁&quot;&gt;&lt;a href=&quot;#互斥锁和自旋锁&quot; class=&quot;headerlink&quot; title=&quot;互斥锁和自旋锁&quot;&gt;&lt;/a&gt;互斥锁和自旋锁&lt;/h1&gt;&lt;h2 id=&quot;互斥锁&quot;&gt;&lt;a href=&quot;#互斥锁&quot; class=&quot;headerlink&quot; title=</summary>
+      
+    
+    
+    
+    
+    <category term="随笔" scheme="https://gxy-littleant.github.io/tags/%E9%9A%8F%E7%AC%94/"/>
+    
+  </entry>
   
   <entry>
     <title>值得回顾的笔试题</title>
